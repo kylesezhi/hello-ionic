@@ -13,6 +13,15 @@
         <link rel="stylesheet" href="css/layouts/side-menu.css">
     <!--<![endif]-->
     <script src="https://use.fontawesome.com/adcd6887ac.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      var path = window.location.pathname;
+      var num = parseInt(path.split("/").pop().charAt(0)); // 1.html
+      num += 1;
+      var nextpage = num + ".html";
+    </script>
 </head>
 <body>
 
@@ -42,43 +51,21 @@
     </div>
 
     <div id="main">
-        <div class="header">
-            <h1>Hello Ionic</h1>
-            <h2>Make an Ionic iOS app</h2>
-        </div>
 
         <div class="content">
-            <h2 class="content-subhead">About This Guide</h2>
+            <h2 class="content-subhead">Install Ionic and Make A Blank App</h2>
             <p>
-              We will be making an iOS mobile application with Ionic 1 that accesses a RESTful API. Because this is an iOS application, you'll need to be on MacOS to develop and test.
+              Get <a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12">Xcode</a>. Then install Homebrew in the terminal:
+              
+              
             </p>
+            <pre><code class="bash hljs" style="font-size: small">ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></pre>
+
             <p>
-              We will be making an Ionic application with Angular 1, not 2, so keep that in mind when you are Googling for info.
+              Install npm with Homebrew:
             </p>
-            
-            <h2 class="content-subhead">Prereq: Learn Angular</h2>
-            <p>
-              Yes, this is a guide for building an iOS mobile app using Ionic and a RESTful API, so why would you need to learn AngularJS? 
-            </p>
-            
-            <p>
-              Ionic is built atop Angular so you will need to understand its basics to make anything that works in Ionic. Before we begin, <a href="https://www.codeschool.com/courses/shaping-up-with-angular-js">learn the basics of Angular 1 here free.</a>
-            </p>
-          
-            <p>
-              All set? Great! Here are the concepts from that course that you'll be needing as you make your Ionic application:
-            </p>
-            
-            <p>
-              <ul>
-                <li>TODO</li>
-              </ul>
-            </p>
-            
-            <p>
-              If you didn't understand the above at Code School or they didn't come up, have a Google for clarification.
-            </p>
-            <a class="pure-button pure-button-primary" href="1.html">Next <i class="fa fa-arrow-right"></i></a>
+
+            <a class="pure-button pure-button-primary" onclick="window.open(nextpage);">Next <i class="fa fa-arrow-right"></i></a>
         </div>
     </div>
 </div>
