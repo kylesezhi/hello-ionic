@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
-    <title>Responsive Side Menu &ndash; Layout Examples &ndash; Pure</title>
+    <title>Hello Ionic</title>
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
@@ -56,13 +56,22 @@
             <h2 class="content-subhead">Edit Your Application</h2>
             <p>Peering into our myApp folder reveals a lot of files you will not be worrying about. Open up www and find something more familiar - HTML, Angular and CSS. This looks more like an Angular app.</p>
             <img src="img/01.png" class="pure-img-responsive" alt="">
-            <p>The most interesting things are happening in app.js, controllers.js and the HTML template files in the templates folder. We will take a walk through a project for this class, an app for putting students in line to meet with a teacher. <a href="https://github.com/kylesezhi/496app">You can clone the repo and follow along here.</a></p>
+            <p>The most interesting things are happening in app.js, controllers.js and the HTML template files in the templates folder. We will take a walk through a project for this class, an app for putting students in line to meet with a teacher. <a href="https://github.com/kylesezhi/496app">You can clone the repo and follow along here, but make sure to emulate with this repo - it does not work properly with ionic serve --lab because it has mobile only features enabled.</a></p>
             <h3>app.js</h3>
             <p>Scroll down passed the run() function and have a look at the config section. Here we find the routes for our application, organized with information for the URLs that can take us there, the templates that are rendered, and the controllers that provide logic. At the end of the routes we have a defualt which will fire if no other route exists.</p>
             <img src="img/02.png" class="pure-img-responsive" alt="" width="550">
             <img src="img/03.png" class="pure-img-responsive" alt="" width="550">
-            <p>Now we have an idea of how to make new views and link them together. Take a peek in the templates folder. We can see how the Users view will be rendered:</p>
+            <h3>users.html</h3>
+            <p>Now we have an idea of how to make new views and link them together. Take a peek in the templates folder. We can see how the Users view will be rendered in users.html:</p>
             <img src="img/04.png" class="pure-img-responsive" alt="" width="750">
+            <p>Notice we are looping through users, are calling a function to delete a given user, and we have a link to a new screen to add a user. This screen renders like this if we run <pre><code class="bash hljs" style="font-size: small">ionic serve --lab</code></pre> from the terminal:</p>
+            <img src="img/05.png" class="pure-img-responsive" alt="">
+            <h3>controllers.js</h3>
+            <p>How to we get our users? We are making a call to an API using $http. We can see the actual code in our UsersCtrl (defined in app.js) to see where exactly we are calling and how we are parsing the received JSON into something our template can display. We pass the array at line 68, labeled "for UI".</p>
+            <img src="img/06.png" class="pure-img-responsive" alt="" width="550">
+            <p>The API returns data in this format:</p>
+            <img src="img/07.png" class="pure-img-responsive" alt="">
+            <p>Next, let's look at our delete function and our add user form with an HTTP PUT request.</p>
             
             <a class="pure-button pure-button-primary" onclick="window.open(nextpage,'_self');">Next <i class="fa fa-arrow-right"></i></a>
         </div>
