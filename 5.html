@@ -54,7 +54,20 @@
 
         <div class="content">
             <h2 class="content-subhead">Mobile Only: App Badges</h2>
-            <p>We mentioned the relationship between Cordova and Ionic before, and now it will come into play</p>
+            <p>We mentioned the relationship between Cordova and Ionic before. Cordova has a rich ecosystem of plugins that we can use in our Ionic app. In this example, we will install a plugin that allows us to change the badge number on the application's icon based on the number of users in the list. It will look something like this:</p>
+            <img src="img/14.png" class="pure-img-responsive" alt="">
+            <p>Using <a href="https://www.thepolyglotdeveloper.com/2015/07/modify-the-badge-number-of-an-ionic-framework-app/">this tutorial as a base</a>, we start by installing the plugin in the folder of our Ionic application with this command:</p>
+            <pre><code class="bash hljs" style="font-size: small">cordova plugin add https://github.com/katzer/cordova-plugin-badge.git</code></pre>
+            <p>But we can't start using this plugin right away. We must first install a library, ng-cordova, which will allow us to access the goodness of this badge plugin from within Angular. We load ng-cordova in our main app view by including it <i>before</i> our inclusion of Cordova itself:</p>
+            <img src="img/15.png" class="pure-img-responsive" alt="" width="450">
+            <p>At this point, I must mention that choosing <i>which</i> ng-cordova to download and install is important. I found that because of deprication of function names, <a href="https://github.com/driftyco/ng-cordova/issues/1027">it was necessary to modify ng-cordova to work properly with this badge plugin</a>. To avoid this hassle, you can find my version of ng-cordova in the <a href="https://github.com/kylesezhi/496app">repo for this project in the js folder.</a></p>
+            <p>In controllers.js, we pass in ngCordova so we can use our newly-installed badge plugin:</p>
+            <img src="img/16.png" class="pure-img-responsive" alt="" width="550">
+            <p>iOS requires that users explicitly give permission to applications to allow them to send notifications and show badges. We therefore start our controller for users with the request to the user for permission to show a badge:</p>
+            <img src="img/17.png" class="pure-img-responsive" alt="" width="600">
+            <p>Then after we have a number of users to put in the badge, we set the badge with the appropriate number after ensuring we have permission from the user:</p>
+            <img src="img/18.png" class="pure-img-responsive" alt="" width="600">
+            <p>And that is it! We have an updating badge that changes each time we open this view and make a request to the API.</p>
             
             
             <a class="pure-button pure-button-primary" onclick="window.open(nextpage,'_self');">Next <i class="fa fa-arrow-right"></i></a>
