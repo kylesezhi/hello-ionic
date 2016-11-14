@@ -18,7 +18,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
     <script>
       var path = window.location.pathname;
-      var num = parseInt(path.split("/").pop().charAt(0)); // 1.html
+      var num = parseInt(path.split("/").pop().charAt(0)); // current pagenum
       num += 1;
       var nextpage = num + ".html";
     </script>
@@ -64,8 +64,56 @@
             <p>
               Install npm with Homebrew:
             </p>
+            <pre><code class="bash hljs" style="font-size: small">brew install node</code></pre>
+            
+            <p>Now we can install Ionic globally with:</p>
+            
+            <pre><code class="bash hljs" style="font-size: small">npm install -g cordova ionic</code></pre>
+            
+            <p>You will notice that we first install <a href="https://cordova.apache.org/">Cordova</a>, and that is important. We need Cordova as it is on this that Ionic is built. In fact, the mobile plugin we are using is a Cordova plugin. More on that later.</p>
+            
+            <p>Now we can generate a blank mobile application. We have three options: blank, tabs and sidemenu. We will use the third:</p>
+            
+            <pre><code class="bash hljs" style="font-size: small">ionic start myApp sidemenu</code></pre>
+            
+            <p>You may be asked to open or login to an ionic.io account. This is entirely optional and not necessary for this tutorial.</p>
+            
+            <p>Now remove/add iOS to your application (it probably got installed by default though), build your app and launch it in the browser:</p>
+            
+            <pre><code class="bash hljs" style="font-size: small">cd myApp
+ionic platform rm ios; ionic platform add ios
+ionic build ios
+ionic serve --lab</code></pre>
 
-            <a class="pure-button pure-button-primary" onclick="window.open(nextpage);">Next <i class="fa fa-arrow-right"></i></a>
+            <p>Alternatively, you can swap out that last command with:</p>
+            
+            <pre><code class="bash hljs" style="font-size: small">ionic emulate ios</code></pre>
+            
+            <p>to see this in Apple's iOS emulator. The emulator is cool, but very very slow. You can marginally increase its startup screen by opening Xcode and selecting the Window > Devices menu. In the window that appears, remove the (many) devices you won't be testing on. Even with this hack, building and emulating mobile apps is time-consuming.</p>
+            
+            <p>For this reason, I recommend using the browser for initial development. It has the added bonus of automatically refreshing when it detects any code is changed.</p>
+
+            <h2 class="content-subhead">Common Issues</h2>
+            
+            <h3>CORS Errors in Browser</h3>
+            
+            <p>When serving in the browser, you may get errors for CORS security violations. This will not happen in the actual app, and is only due to the fact that you are serving the application in the browser. To stop these errors (and only during development as it is a security hazard!) you can launch Chrome this way to disable these security checks and allow you to preview how your app would run:</p>
+
+            <pre><code class="bash hljs" style="font-size: small">/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security --user-data-dir</code></pre>
+
+            <h3>Icon Error from Ionic</h3>
+            
+            <p>At some point in this process, you may get an error that complains about the lack of some icon. This can be fixed by generating all icons with the following command:</p>
+            
+            <pre><code class="bash hljs" style="font-size: small">ionic resources --icon</code></pre>
+
+            <h3>Odd Plugin Errors</h3>
+            
+            <p>As you add plugins, you may find that you get inexplicable errors. One thing that can help: remove your iOS platform and reinstall it:</p>
+            
+            <pre><code class="bash hljs" style="font-size: small">ionic platform rm ios; ionic platform add ios</code></pre>
+
+            <a class="pure-button pure-button-primary" onclick="window.open(nextpage,'_self');">Next <i class="fa fa-arrow-right"></i></a>
         </div>
     </div>
 </div>
